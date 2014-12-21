@@ -2,11 +2,12 @@
 
 Game jam entry for Ludum Dare 29 theme: "Beneath the Surface", 25-28 April
 2014.
-Anton Gerdelan (code, pix) @capnramses
-Tom Snively (music loops) @tomsnively
 
-Entry URL in LD29: http://ludumdare.com/compo/ludum-dare-29/?action=preview&uid=30024
-On-line URL (so you can play it now): http://antongerdelan.net/mountain_king/
+* Anton Gerdelan (code, pix) @capnramses
+* Tom Snively (music loops) @tomsnively
+
+* Entry URL in LD29: http://ludumdare.com/compo/ludum-dare-29/?action=preview&uid=30024
+* On-line URL (so you can play it now): http://antongerdelan.net/mountain_king/
 
 ##Comments##
 
@@ -28,3 +29,7 @@ The game draws on one or two elements from:
 The high-score idea was a first attempt and is in no way secure - it's pretty
 easy to interactively modify the JavaScript that controls your current score
 so that it submits something huge to the server (just a little PHP script).
+
+The audio is better than Dolphin's but HTML5 audio still isn't great - there
+needs to be a way to pre-buffer the sounds nicely so that there is no delay
+between the WAV download and the first sound playing.
