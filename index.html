@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!--
+MOUNTAIN KING
+Game entry for Ludum Dare 29
+Anton Gerdelan (@capnramses)
+26 April 2014
+-->
+<html>
+
+<head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38287357-1']);
+  _gaq.push(['_setDomainName', 'antongerdelan.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<title>Mountain King</title>
+<style>
+#death_overlay {
+visibility:hidden;
+top:100px;
+left:20px;
+width:490px;
+height:428px;
+position:absolute;
+background-color:white;
+opacity:0.9;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+moz-border-radius: 15px;
+border-radius: 15px;
+}
+#hiscore_overlay {
+visibility:hidden;
+top:100px;
+left:20px;
+width:490px;
+height:428px;
+position:absolute;
+background-color:white;
+opacity:0.9;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+moz-border-radius: 15px;
+border-radius: 15px;
+}
+</style>
+</head>
+
+<body style="font-family: monospace">
+
+<div id="death_overlay">
+<center>
+<h1>Flattened!</h1>
+<img src="art/dead.png" />
+</center>
+<hr />
+<h2>Score</h2>
+<ul>
+<li>You collected <b id="dead_gems_text">X</b> points of gems</li>
+<li>You killed <b id="dead_trolls_text">X</b> points of trolls</li>
+<li>Total: <b id="dead_total_text">X</b></li>
+</ul>
+<h2>Thanks for Playing!</h2>
+<p style=margin-left:10px;>
+You can refresh the page to start a new game ... under the mountain!
+</p>
+</div>
+
+<div id="hiscore_overlay">
+<center>
+<h1>New High Score!</h1>
+<img src="art/troll_door.png" />
+</center>
+<hr />
+<h2>Score</h2>
+<ul>
+<li>You collected <b id="hs_gems_text">X</b> points of gems</li>
+<li>You killed <b id="hs_trolls_text">X</b> points of trolls</li>
+<li>Total: <b id="hs_total_text">X</b></li>
+</ul>
+<center>
+<input id="entered_name" type="box" value="unnamed"></input><input type="button" value="submit" onclick="submit_score()" id="subbutt"></input>
+</center>
+<h2>Thanks for Playing!</h2>
+<p style=margin-left:10px;>
+You can refresh the page to start a new game ... under the mountain!
+</p>
+</div>
+
+<h1>Mountain King</h1>
+<canvas id="canvas" width=512 height=512></canvas>
+<p id="score" style="top:55px;position:absolute;color:yellow;">score: 0<br />
+high: 0 (name)</p>
+<!--<p id="pos">player pos</p>-->
+<p>
+Move with WASDF or cursor keys and spacebar.
+</p>
+<p>
+Anton Gerdelan (code, pix) <a href="https://twitter.com/capnramses">@capnramses</a><br />
+Tom Snively (music loops) <a href="https://twitter.com/tomsnively">@tomsnively</a><br />
+Game jam entry for Ludum Dare 29 theme: "Beneath the Surface".<br />
+25-28 April 2014.
+</p>
+<audio id="one_music" loop preload> <!--  autoplay loop -->
+	<source src="music/MK-level-1.mp3" type="audio/mp3">
+</audio>
+<audio id="two_music" loop preload> <!--  autoplay loop -->
+	<source src="music/MK-level-2.mp3" type="audio/mp3">
+</audio>
+<audio id="three_music" loop preload> <!--  autoplay loop -->
+	<source src="music/MK-level-3.mp3" type="audio/mp3">
+</audio>
+<audio id="four_music" loop preload> <!--  autoplay loop -->
+	<source src="music/MK-level-4.mp3" type="audio/mp3">
+</audio>
+<audio id="killed_music" preload> <!--  autoplay loop -->
+	<source src="music/killed.mp3" type="audio/mp3">
+</audio>
+<audio id="ending_music" preload> <!--  autoplay loop -->
+	<source src="music/MK-ending.mp3" type="audio/mp3">
+</audio>
+<audio id="gem_sound" preload> <!--  autoplay loop -->
+	<source src="sfx/gem.ogg" type="audio/ogg">
+	<source src="sfx/gem.mp3" type="audio/mp3">
+</audio>
+<audio id="shoot_sound" preload> <!--  autoplay loop -->
+	<source src="sfx/shoot.ogg" type="audio/ogg">
+	<source src="sfx/shoot.mp3" type="audio/mp3">
+</audio>
+<audio id="reload_sound" preload> <!--  autoplay loop -->
+	<source src="sfx/reload.ogg" type="audio/ogg">
+	<source src="sfx/reload.mp3" type="audio/mp3">
+</audio>
+</body>
+
+<script src="webgl-utils.js"></script>
+<script src="webgl-debug.js"></script>
+<script src="utils.js"></script>
+<script src="tiles.js"></script>
+<script src="player.js"></script>
+<script src="gems.js"></script>
+<script src="troll.js"></script>
+<script src="bullet.js"></script>
+<script src="main.js"></script>
+</html>
